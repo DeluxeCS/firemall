@@ -1,2 +1,0 @@
-# firemall
-for share
