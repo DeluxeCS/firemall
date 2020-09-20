@@ -2,7 +2,7 @@
 <template>
   <div>
     <nav-header></nav-header>
-    <view-router></view-router>
+    <router-view></router-view>
     <nav-footer></nav-footer>
   </div>
 </template>
@@ -13,6 +13,7 @@
 import NavHeader from "../components/NavHeader";
 import NavFooter from "../components/NavFooter";
 export default {
+  name: "home",
   //import引入的组件需要注入到对象中才能使用
   components: {
     NavHeader,
