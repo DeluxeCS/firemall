@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../pages/home";
-import Index from "../pages/home";
+import Index from "../pages/index";
 import Order from "../pages/order";
 import Cart from "../pages/cart";
 import OrderConfirm from "../pages/orderConfirm";
@@ -14,13 +14,13 @@ import Product from "../pages/product";
 Vue.use(VueRouter);
 
 export default new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
       path: "/",
       name: "home",
       component: Home,
-      redirect:'/index',
+      redirect: "/index",
       children: [
         {
           path: "/index",
@@ -67,9 +67,9 @@ export default new VueRouter({
       component: Cart,
     },
     {
-        path: "/login",
-        name: "login",
-        component: Login,
-      },
+      path: "/login",
+      name: "login",
+      component: Login,
+    },
   ],
 });

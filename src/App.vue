@@ -5,10 +5,12 @@
 </template>
 
 <script>
-
+// import stroage from "./storage/index";
 export default {
-  name: 'App',
-}
+  name: "App",
+  mounted() {
+  },
+};
 </script>
 
 <style>
