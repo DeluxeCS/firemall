@@ -1,6 +1,9 @@
 <!-- index -->
 <template>
-  <div>index</div>
+  <div class="header">
+    <div class="nav-topbar"></div>
+    <div class="nav-header"></div>
+  </div>
 </template>
 
 <script>

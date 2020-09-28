@@ -5,10 +5,26 @@
 </template>
 
 <script>
-// import stroage from "./storage/index";
 export default {
   name: "App",
+  data() {
+    return {
+      res: {},
+    };
+  },
   mounted() {
+    // 请求本地文件
+    // this.axios.get("/mock/user/login.json").then((res) => {
+    //   this.res = res;
+    // });
+    // 请求eas-mock
+    // this.axios.get("https://www.easy-mock.com/mock/5f649e65fdeff7084f396a67/example/user/login").then((res) => {
+    //   this.res = res;
+    // });
+    // 本地集成mockjs
+    this.axios.get("/user/login").then((res) => {
+      this.res = res;
+    });
   },
 };
 </script>
