@@ -50,7 +50,7 @@ export default {
   methods: {},
 };
 </script>
-<style lang='sass' scoped>
+<style lang='scss'>
 //@import url(); 引入公共css类
 
 </style>

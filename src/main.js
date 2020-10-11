@@ -26,18 +26,18 @@ axios.defaults.baseURL = "/api";
 axios.defaults.timeout = 8000;
 
 // 全局拦截器
-// axios.interceptors.request.use(function(response) {
-//   // 获取返回值
-//   let res = response.data;
-//   if (res.status == 0) {
-//     return res.data;
-//     // 规范状态码
-//   } else if (res.status == 100) {
-//     window.location.href = "/#/login";
-//   } else {
-//     alert(res.msg);
-//   }
-// });
+axios.interceptors.request.use(function(response) {
+  // 获取返回值
+  let res = response.data;
+  if (res.status == 0) {
+    return res.data;
+    // 规范状态码
+  } else if (res.status == 100) {
+    window.location.href = "/#/login";
+  } else {
+    alert(res.msg);
+  }
+});
 
 new Vue({
   router,

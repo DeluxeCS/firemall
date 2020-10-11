@@ -14,7 +14,7 @@ import Product from "../pages/product";
 Vue.use(VueRouter);
 
 export default new VueRouter({
-  mode: "history",
+  // mode: "history",
   routes: [
     {
       path: "/",

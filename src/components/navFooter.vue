@@ -13,7 +13,7 @@ export default {
   name: "nav-footer",
 };
 </script>
-<style lang='sass' scoped>
+<style lang='scss'>
 //@import url(); 引入公共css类
 
 </style>
