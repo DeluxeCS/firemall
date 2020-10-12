@@ -29,7 +29,82 @@
         <div class="header-menu">
           <div class="item-menu">
             <span>小米手机</span>
-            <div class="children"></div>
+            <div class="children">
+              <ul>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90"
+                        alt=""
+                      />
+                    </div>
+                    <div class="pro-name">小米手机</div>
+                    <div class="pro-price">1999</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="" target="_blank">
+                    <div class="pro-img">
+                      <img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90"
+                        alt=""
+                      />
+                    </div>
+                    <div class="pro-name">小米手机</div>
+                    <div class="pro-price">1999</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="javascript:;" target="_blank">
+                    <div class="pro-img">
+                      <img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90"
+                        alt=""
+                      />
+                    </div>
+                    <div class="pro-name">小米手机</div>
+                    <div class="pro-price">1999</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="javascript:;" target="_blank">
+                    <div class="pro-img">
+                      <img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90"
+                        alt=""
+                      />
+                    </div>
+                    <div class="pro-name">小米手机</div>
+                    <div class="pro-price">1999</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="javascript:;" target="_blank">
+                    <div class="pro-img">
+                      <img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90"
+                        alt=""
+                      />
+                    </div>
+                    <div class="pro-name">小米手机</div>
+                    <div class="pro-price">1999</div>
+                  </a>
+                </li>
+                <li class="product">
+                  <a href="javascript:;" target="_blank">
+                    <div class="pro-img">
+                      <img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b11742a0be47f9d97bb6a13ea580018d.png?thumb=1&w=160&h=110&f=webp&q=90"
+                        alt=""
+                      />
+                    </div>
+                    <div class="pro-name">小米手机</div>
+                    <div class="pro-price">1999</div>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="item-menu">
             <span>Redmi红米</span>
@@ -56,8 +131,13 @@
             <div class="children"></div>
           </div>
         </div>
+        <div class="header-search">
+          <div class="wrapper">
+            <input type="text" name="keyword" />
+            <a href="javascript:;"></a>
+          </div>
+        </div>
       </div>
-      <div class="header-search"></div>
     </div>
   </div>
 </template>
@@ -70,15 +150,14 @@ export default {
 <style lang='scss' >
 @import "./../assets/scss/config.scss";
 @import "./../assets/scss/base.scss";
+@import "./../assets/scss/mixin.scss";
 .header {
   .nav-topbar {
     height: 39px;
     line-height: 39px;
     background-color: $colorB;
     .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex();
       a {
         display: inline-block;
         color: #b0b0b0;
@@ -90,11 +169,7 @@ export default {
         text-align: center;
         color: $colorG;
         .icon-cart {
-          display: inline-block;
-          height: 12px;
-          width: 16px;
-          background: url("/imgs/icon-cart-checked.png") no-repeat center;
-          background-size: contain;
+          @include bgImg(16px, 12px, "/imgs/icon-cart-checked.png");
           margin-right: 4px;
         }
       }
@@ -103,9 +178,8 @@ export default {
   .nav-header {
     .container {
       height: 112px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: relative;
+      @include flex();
       .header-logo {
         display: inline-block;
         width: 55px;
@@ -113,34 +187,121 @@ export default {
         background-color: $colorA;
         a {
           display: inline-block;
+          width: 55px;
           height: 55px;
-          width: 110px;
+          overflow: hidden;
           &:before {
             content: "";
-            display: inline-block;
-            height: 55px;
-            width: 55px;
-            background: url("/imgs/mi-logo.png") no-repeat center;
-            background-size: contain;
-            transition: margin 0.2s;
+            @include bgImg(55px, 55px, "/imgs/mi-logo.png");
+            transition: all 0.2s;
           }
           &:after {
             content: "";
-            display: inline-block;
-            height: 55px;
-            width: 55px;
-            background: url("/imgs/mi-home.png") no-repeat center;
-            background-size: contain;
+            @include bgImg(55px, 55px, "/imgs/mi-home.png");
           }
           &:hover:before {
             margin-left: -55px;
-            transition: margin 0.2s;
+            transition: all 0.2s;
           }
         }
       }
       .header-menu {
+        display: inline-block;
         .item-menu {
           display: inline-block;
+          color: $colorB;
+          font-weight: bold;
+          font-size: $fontI;
+          line-height: 112px;
+          margin-right: 20px;
+          &:last-child {
+            margin-right: 0px;
+          }
+          span {
+            cursor: pointer;
+          }
+          &:hover {
+            color: $colorA;
+            .children {
+              height: 220px;
+              opacity: 1;
+            }
+          }
+          .children {
+            position: absolute;
+            top: 112px;
+            left: 0px;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.11);
+            z-index: 10;
+            background-color: #ffffff;
+            transition: all .2s;
+            .product {
+              position: relative;
+              float: left;
+              width: 16.6%;
+              height: 220px;
+              font-size: 12px;
+              line-height: 12px;
+              text-align: center;
+              a{
+                display:inline-block;
+              }
+              img {
+                width: auto;
+                height: 111px;
+                margin-top: 26px;
+              }
+              .pro-img {
+                height: 137px;
+              }
+              .pro-name {
+                font-weight: bold;
+                margin-top: 19px;
+                margin-bottom: 8px;
+                color: $colorB;
+              }
+              .pro-price {
+                color: $colorA;
+              }
+               &:before{
+                  content: '';
+                  position: absolute;
+                  top: 28px;
+                  right: 0;
+                  border-right: 1px solid $colorF;
+                  height: 100px;
+                  width: 1px;
+                }
+                &:last-child:before{
+                  border-right: none;
+                }
+            }
+          }
+        }
+      }
+      .header-search {
+        width: 319px;
+        .wrapper {
+          height: 50px;
+          border: 1px solid #e0e0e0;
+          display: flex;
+          align-items: center;
+          input {
+            border: none;
+            box-sizing: border-box;
+            border-right: 1px solid #e0e0e0;
+            width: 264px;
+            height: 50px;
+            padding-left: 14px;
+          }
+          a {
+            @include bgImg(18px, 18px, "/imgs/icon-search.png");
+            margin-left: 14px;
+          }
         }
       }
     }
