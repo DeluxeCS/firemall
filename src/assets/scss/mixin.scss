@@ -1,9 +1,8 @@
 //flex布局复用
-@mixin flex($hover:space-between,$col:center) {
-  display: flex;
-  justify-content: $hover;
-  align-items: $col;
-  
+@mixin flex($hov:space-between,$col:center){
+  display:flex;
+  justify-content:$hov;
+  align-items:$col;
 }
 @mixin bgImg($w:0,$h:0,$img:'',$size:contain){
   display:inline-block;

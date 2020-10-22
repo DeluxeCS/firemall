@@ -6,29 +6,38 @@
 
 <script>
 export default {
-  name: "App",
-  data() {
+  name: 'app',
+  components: {
+    
+  },
+  data(){
     return {
-      res: {},
-    };
+      
+    }
   },
-  mounted() {
-    // 请求本地文件
-    // this.axios.get("/mock/user/login.json").then((res) => {
-    //   this.res = res;
-    // });
-    // 请求eas-mock
-    // this.axios.get("https://www.easy-mock.com/mock/5f649e65fdeff7084f396a67/example/user/login").then((res) => {
-    //   this.res = res;
-    // });
-    // 本地集成mockjs
-    this.axios.get("/user/login").then((res) => {
-      this.res = res;
-    });
+  mounted(){
+    if(this.$cookie.get('userId')){
+      this.getUser();
+      this.getCartCount();
+    }
   },
-};
+  methods:{
+    getUser(){
+      this.axios.get('/user').then((res={})=>{
+        this.$store.dispatch('saveUserName',res.username);
+      })
+    },
+    getCartCount(){
+      this.axios.get('/carts/products/sum').then((res=0)=>{
+        this.$store.dispatch('saveCartCount',res);
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss">
-@import "./assets/scss/reset.scss";
+@import './assets/scss/reset.scss';
+@import './assets/scss/config.scss';
+@import './assets/scss/button.scss';
 </style>

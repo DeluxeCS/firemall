@@ -1,53 +1,39 @@
 /**
- * storage的封装
- * 浏览器存储的sessionStorage的添加删除和修改方式不足
- * 只能以key-val的形式存储字符串或数字
- * 需求：
- *    storage能够存储json或其他样式的数据
+ * Storage封装
  */
-
-const STORAGE_KEY = "fireMall";
-
-export default {
-  // 传递两个参数key，以及模块名
-  getItem(key, module_name) {
-    //   取值的方式有两种
-    // 2、获取fireMall的val的嵌套值
-    if (module_name) {
-      let value = this.getItem(module_name);
-      if (value) {
-        return value[key];
-      }
+const  STORAGE_KEY = 'firemall';
+export default{
+  // 存储值
+  setItem(key,value,module_name){
+    if (module_name){
+      let val = this.getItem(module_name);
+      val[key] = value;
+      this.setItem(module_name, val);
+    }else{
+      let val = this.getStorage();
+      val[key] = value;
+      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val));
     }
-    // 1、获取key-val的值
+  },
+  // 获取某一个模块下面的属性user下面的userName
+  getItem(key,module_name){
+    if (module_name){
+      let val = this.getItem(module_name);
+      if(val) return val[key];
+    }
     return this.getStorage()[key];
   },
-  setItem(key, val, module_name) {
-    key === "STORAGE_KEY" &&
-      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val));
-    if (module_name) {
-      let value = this.getItem(module_name);
-      value[key] = val;
-      this.setItem(module_name, value);
-    } else {
-      // 在fireMall下的value新增
-      let value = this.getStorage();
-      value[key] = val;
-      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+  getStorage(){
+    return JSON.parse(window.sessionStorage.getItem(STORAGE_KEY) || '{}');
+  },
+  clear(key, module_name){
+    let val = this.getStorage();
+    if (module_name){
+      if (!val[module_name])return;
+      delete val[module_name][key];
+    }else{
+      delete val[key];
     }
-  },
-  // 获取fireMall下的value值
-  getStorage() {
-    return JSON.parse(window.sessionStorage.getItem(STORAGE_KEY));
-  },
-  // 指定key清空或value下部分清空
-  clear(key, module_name) {
-    let value = this.getStorage();
-    if (module_name) {
-      delete value[module_name][key];
-    } else {
-      delete value[key];
-    }
-    this.setItem(STORAGE_KEY, value);
-  },
-};
+    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val));
+  }
+}

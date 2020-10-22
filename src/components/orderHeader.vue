@@ -1,49 +1,62 @@
-<!-- order-header -->
 <template>
-  <div>order-header</div>
+  <div class="order-header">
+    <div class="container clearfix">
+      <div class="header-logo">
+        <a href="/#/index"></a>
+      </div>
+      <div class="title">
+        <h2>{{title}}<slot name="tip"></slot></h2>
+      </div>
+      <div class="username">
+        <a href="javascript:;">{{username}}</a>
+      </div>
+    </div>
+  </div>
 </template>
-
 <script>
-//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-//例如：import 《组件名称》 from '《组件路径》';
-
-export default {
-  name: "order-header",
-  //import引入的组件需要注入到对象中才能使用
-  components: {},
-  data() {
-    //这里存放数据
-    return {};
-  },
-  //监听属性 类似于data概念
-  computed: {},
-  //监控data中的数据变化
-  watch: {},
-  //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
-  //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
-  //生命周期 - 创建之前
-  beforeCreate() {},
-  //生命周期 - 挂载之前
-  beforeMount() {},
-  //生命周期 - 更新之前
-  beforeUpdate() {},
-  //生命周期 - 更新之后
-  updated() {},
-  //生命周期 - 销毁之前
-  //beforeDestroy() {
-  //},
-  //生命周期 - 销毁完成
-  //destroyed() {
-  //},
-  //如果页面有keep-alive缓存功能，这个函数会触发
-  activated() {},
-  //方法集合
-  methods: {},
-};
+  import {mapState} from 'vuex'
+  export default{
+    name:'order-header',
+    props:{
+      title:String
+    },
+    computed:{
+      ...mapState(['username'])
+    },
+  }
 </script>
-<style lang='scss'>
-//@import url(); 引入公共css类
-
+<style lang="scss">
+  .order-header{
+    padding:30px 0;
+    border-bottom:2px solid #FF6600;
+    .header-logo{
+      float:left;
+    }
+    .title,.username{
+      display:inline-block;
+      height:55px;
+      line-height:55px;
+    }
+    .title{
+      float:left;
+      margin-left:54px;
+      h2{
+        font-size:28px;
+        color:#333333;
+      }
+      span{
+        font-size:14px;
+        margin-left:17px;
+        color:#999999;
+        font-weight:200;
+      }
+    }
+    .username{
+      float:right;
+      a{
+        color:#666666;
+        font-size:16px;
+      }
+    }
+  }
 </style>
