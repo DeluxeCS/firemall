@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import router from './router'
+import router from './router/router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
